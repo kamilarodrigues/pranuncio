@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/pages/templates/default.xhtml">
+	<ui:define name="corpo">
+		<h:form>
+			<link href="../../resources/css/cssAnuncios.css" rel="stylesheet" />
+			<br />
+			<br />
+			<p:outputLabel value="Anúncios"  
+				style="font-size:24px;font-variant: super;color:#00338C;" />
+			<div align="right" style="width: 93%; margin-left: 1%;">
+				<p:commandButton id="btnNovo" value="Novo Anúncio"
+					action="#{meusAnunciosController.cadAnuncio()}" icon="ui-icon-plusthick" />
+			</div>
+			<br />
+			<p:scrollPanel id="tabelaAnuncios" mode="native" style="width:98%;text-aling:left;">
+				<br />  
+				<div align="left">
+					<div class="col-md-4">   
+						<div class="borderSombra" style="height: 320px;">
+							<h:panelGroup>
+								<h:panelGrid columns="1" style="width:95%;margin-left:4%;">
+									<br />
+									<h:panelGroup>
+										<h:panelGrid columns="2" columnClasses="tamanho5,colunaBotao"
+											style="width:99%;margin-left:0.5%;">
+											<p:outputLabel value="#"
+												style="font-size:16px;" />
+										</h:panelGrid>
+									</h:panelGroup>
+									<h:panelGroup>
+										<h:panelGrid columns="2" columnClasses="tamanho5,colunaBotao"
+											style="width:99%;margin-left:0.5%;">
+											<p:outputLabel value="CURSOS DE IDIOMAS"
+												style="font-size:16px;font-weight: initial;" />
+										</h:panelGrid>
+									</h:panelGroup>
+								</h:panelGrid>
+								<h:panelGrid columns="1" style="width:95%;margin-left:4%;"
+									columnClasses="tamanho98">
+									<h:panelGroup>
+										<p:outputLabel value="#"
+											style="font-size:30px;color:#A0C637;margin-left:1%;">
+										</p:outputLabel>
+									</h:panelGroup>
+									<p:outputLabel value="N semana(s)"
+										style="font-size:14px;font-weight: initial;" />
+									<br />
+									<p:outputLabel value="Curso:  "
+										style="font-size:15px;font-weight: initial;" />
+									<p:outputLabel value="Hospedagem: "
+										style="font-size:15px;font-weight: initial;" />
+									<p:outputLabel value="Escola:"
+										style="font-size:15px;font-weight: initial;" />
+								</h:panelGrid>
+								<br />
+								<div align="center">
+									<p:commandButton value="Saiba Mais" class="botao"
+										title="Mais informações sobre este pacote"
+										style="font-size:13px;" icon="ui-icon-info" />    
+								</div> 
+							</h:panelGroup>   
+						</div>
+					</div>
+				</div> 
+			</p:scrollPanel>
+		</h:form>     
+	</ui:define>
+</ui:composition>
+</html>

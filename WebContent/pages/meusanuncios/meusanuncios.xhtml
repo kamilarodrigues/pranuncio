@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"> 
+	<ui:composition template="/pages/templates/default.xhtml">
+		<ui:define name="corpo">
+			<h:form>
+				<br />
+				<br /> 
+				<p:outputLabel value="Meus Anúncios"
+					style="font-size:24px;font-variant: super;color:#00338C;" />
+				<div align="right" style="width:93%;margin-left:1%;">
+					<p:commandButton id="btnNovo" value="Novo Anúncio" action="#{meusAnunciosController.cadAnuncio()}" icon="ui-icon-plusthick"/>
+				</div>   
+				<br />
+				<p:dataTable id="tabelaAnuncios" value="#"  
+					var="anuncio" scrollable="true" scrollHeight="300"
+					style="width:93%;margin-left:1%;font-size:12px;color:#A20075;">
+					<p:column headerText="Número" style="width:50px;color:#3A98D8;">  
+						<h:outputText value="2565"  />
+					</p:column>
+					<p:column headerText="Título" style="width:150px;color:#3A98D8;">
+						<h:outputText value="Teste" />
+					</p:column>   
+					<p:column headerText="Descrição" style="width:280px;color:#3A98D8;">
+						<h:outputText value="teste descricao" />
+					</p:column>
+					<p:column headerText="valor" style="width:80px;text-align:right;color:#3A98D8;">
+						<h:outputText value="R$ 50,00" />
+					</p:column>
+					<p:column headerText="Editar" style="width:40px;text-align:center;color:#3A98D8;">
+						<p:commandLink action="#"
+							title="Editar" style="text-decoration: none">
+							<i class="fa fa-edit" style="font-size: 15px;"/>
+						</p:commandLink>
+					</p:column>
+					<p:column headerText="Visualizações" style="width:57px;text-align:center;color:#3A98D8;">
+						<p:commandLink action="#"
+							title="Visualizações" style="text-decoration: none">
+							<i class="fa fa-signal" style="font-size: 15px;color:#00354B;"/>  
+						</p:commandLink>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+			<style>
+				.centro {
+					margin-top: 64px; 
+					position: fixed;
+					background: #ffffff;
+					width:85%;
+					margin-left: 14.4%;   
+					height:100%;  
+				}  
+			</style>
+		</ui:define>
+	</ui:composition> 
+</html>

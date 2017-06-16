@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>PR Anúncios</title>
+	<link href="../resources/css/csslogin.css" rel="stylesheet"
+		type="text/css" />  
+	<link rel="SHORTCUT ICON"
+		href="http://evolucaodosdadoseconomicos.com.br/wp/wp-content/uploads/2015/11/cropped-grafico-icone.png" />
+	   
+</h:head>  
+<body>    
+	<h:form>             
+		<p:growl id="growl" life="6000" />             
+		<div align="center" >      
+			<div class="corpo" style="font-size:12px;width:50%;margin-top:50px;">    
+				<img  src="../resources/img/logoPRanuncio.png" style="margin-top:10px;"/>    
+				<p:panelGrid id="panel" columns="2" layout="grid" style="text-align:left;margin-left:4%;width:97%;">   
+					<p:outputLabel value="Cadastre-se" style="color:#003363;font-size:18px;"/>  
+					<p:outputLabel/>
+					<p:outputLabel value="Nome"/>    
+					<p:outputLabel value="Usuário"/>      
+					  
+					<p:inputText placeholder="Nome" value="#"   
+						required="true" requiredMessage="O nome é obrigatório!"/>    
+					<p:inputText placeholder="Usuário" value="#" 
+						required="true" requiredMessage="O usuario é obrigatório!"/>
+		 			 
+		 			<p:outputLabel value="Senha"/>
+		 			<p:outputLabel value="Confirmar Senha"/>  
+		 			
+					<p:inputText placeholder="Senha" value="#" type="password"  
+						required="true" requiredMessage="A senha é obrigatória!" />     
+					<p:inputText placeholder="Senha" value="#" type="password"
+						required="true" requiredMessage="A senha é obrigatória!" />  
+					<h:commandButton id="btnCadastro" action="#"
+						value="Confirmar" class="botaoCadastro" title="Cadastrar-se em PR Anuncios."/>  
+					<h:commandButton id="btnCancelar" action="#"
+						value="Cancelar" class="botaoCancelar" title="Cancelar cadastro."/>   
+					<br/> 
+				</p:panelGrid>     
+			</div>      
+		</div>    
+	</h:form>  
+</body>
+</html>
+  

@@ -1,0 +1,110 @@
+body {
+	font-size: 10px;
+	font-family: tahoma;
+	color: #333;
+	height:100%; 
+} 
+
+.topo {
+	position: fixed;
+	background: #F9FAFB;
+	width: 100%;
+	margin-left:-8px;
+	margin-top:-8px;
+}
+
+.menu {
+	margin-top:-8px;
+	position: fixed;
+	background: #00354B;
+	width: 15%;
+	margin-left:-8px; 
+	height:100%;
+}
+
+.centro {
+	margin-top: 64px; 
+	position: fixed;
+	background: #FF7256;
+	width:85%;
+	margin-left: 14.4%;   
+	height:100%;  
+}  
+
+.dadosmenu {  
+	margin-top:15px;
+	color:#ffffff;
+	width: 95%;
+	margin-left:5%; 
+}
+
+input {
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	background: #fff;
+	width: 100%;
+}
+   
+.ui-inputfield {   
+	font-size: 12px;         
+	box-sizing: border-box;
+	background-color: #E0EFFA;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;    
+	border-radius: 1px;
+	box-shadow: inset 0 2px 2px #fff;
+}
+
+.botao {
+	background: #003363;
+	color: #ffffff;
+	font-size: 15px;
+	width: 100%; border : none;
+	font-weight: bold;
+	border: none;   
+}
+
+.ui-grid {
+	clear: both;
+	padding: 0;
+	margin: 0;
+	border: none;
+}
+
+.ui-widget-content {
+    border: 1px solid #dddddd;
+    background:transparent;
+    border:none;
+    color: #ffffff;
+}
+
+.btnMenu :HOVER{
+    border: 1px solid #dddddd;
+    background:#004e6f;
+    border:none;
+    color: #ffffff;
+}
+
+.tamanho34{
+	width:34%;
+}
+
+.tamanho34r{
+	text-align: center;
+}
+
+.tamanho80{
+	width:80%;
+}
+
+.tamanho20{
+	width:20%;
+} 
+
+.borderSombra {
+    box-shadow: 5px 5px 10px #D7D8DC;
+    -webkit-box-shadow: 5px 5px 10px #D7D8DC;
+    -moz-box-shadow: 5px 5px 10px #0076a3; 
+    background: #f5f3e5;
+} 

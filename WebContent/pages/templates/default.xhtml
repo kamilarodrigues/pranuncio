@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>PR Anúncios</title>
+	<link href="../../resources/css/css.css" rel="stylesheet"
+		type="text/css" />
+	<link rel="SHORTCUT ICON"
+		href="http://evolucaodosdadoseconomicos.com.br/wp/wp-content/uploads/2015/11/cropped-grafico-icone.png" />
+	   
+</h:head>
+<body>
+	<h:form>
+		<p:growl id="growl" life="6000" />  
+		<div class="topo">   
+			<p:panelGrid id="panel" columns="3" layout="grid" columnClasses="tamanho34,tamanho34r,tamanho34"> 
+				<p:outputLabel /> 
+				<h:panelGroup >  
+					<p:outputLabel value="PR Anúncios" style="font-size:34px;color:#003363;"/> <br/>
+					<p:outputLabel value="Anúncie seu produto aqui" style="font-size:18px;color:#78D027;"/> 
+				</h:panelGroup> 
+				<img src="../../resources/img/carrinhoPRanuncio.png" style="float: right;"/>
+			</p:panelGrid>
+		</div> 
+		<div class="menu">   
+			 <div class="dadosmenu">
+				 <br/> 
+			 	<img src="../../resources/img/usuario.png" width="20"/>
+			 	<p:outputLabel value="Olá, #{loginController.usuario.nome}" style="font-size:13px;margin-left:1%;"/>
+			 	<br/> 
+			 	<div align="center" >
+			 		<p:commandLink action="#" title="Informações do Usuário"  >
+						<img src="../../resources/img/settings.png" width="22" />
+					</p:commandLink>  
+				 	<p:commandLink action="#{loginController.deslogar()}" title="Sair" style="margin-left:5%;text-decoration: none;" >
+						<img src="../../resources/img/sair.png" width="22" />
+					</p:commandLink>  
+				</div>
+				<br/><br/>  
+				<p:commandLink action="#{menuController.inicial()}" title="Página inícial" style="margin-left:-20px;text-decoration:none;" class="btnMenu">
+					<p:panelGrid columns="2" layout="grid" style="background:transparent;" columnClasses="tamanho20, tamanho80"> 
+						<img src="../../resources/img/home.png" width="33"/> 
+						<p:outputLabel value="Início" style="font-size:15px;margin-left:1%;color:#ffffff;"/>  
+					</p:panelGrid>  
+				</p:commandLink>    
+				<p:commandLink action="#{menuController.anunciosDisponiveis()}" title="Anúncios" style="margin-left:-20px;text-decoration:none;" class="btnMenu">
+					<p:panelGrid columns="2" layout="grid" style="background:transparent;" columnClasses="tamanho20, tamanho80"> 
+						<img src="../../resources/img/carrinho.png" width="33"/> 
+						<p:outputLabel value="Buscar Produtos" style="font-size:15px;margin-left:1%;color:#ffffff;"/>  
+					</p:panelGrid>  
+				</p:commandLink>    
+				<p:commandLink action="#{menuController.meusAnuncios()}" title="Gerêncie suas vendas" style="margin-left:-20px;text-decoration:none;" class="btnMenu">
+					<p:panelGrid columns="2" layout="grid" style="background:transparent;" columnClasses="tamanho20, tamanho80"> 
+						<img src="../../resources/img/anuncios.png" width="33"/> 
+						<p:outputLabel value="Meus Anúncios" style="font-size:15px;margin-left:1%;color:#ffffff;"/>
+					</p:panelGrid>  
+				</p:commandLink>  <br/> 
+			 </div>   
+		</div>  
+		<div class="centro"  align="center">
+			<ui:insert name="corpo">
+				            Corpo</ui:insert>
+		</div>
+		<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+ 
+		<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false"
+			 resizable="false" showHeader="false">
+		    <img src="../../resources/img/carregar.gif" width="200"/>
+		</p:dialog>
+	</h:form>   
+</body>
+</html>

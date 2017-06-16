@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>PR Anúncios</title>
+	<link href="resources/css/csslogin.css" rel="stylesheet"
+		type="text/css" />
+	<link rel="SHORTCUT ICON"
+		href="http://evolucaodosdadoseconomicos.com.br/wp/wp-content/uploads/2015/11/cropped-grafico-icone.png" />
+
+</h:head>
+<body>
+	<h:form>
+		<p:growl id="growl" life="6000" />
+		<div align="center">
+			<div class="corpo"
+				style="font-size: 13px; width: 25%; margin-top: 50px;">
+				<img src="resources/img/logoPRanuncio.png" style="margin-top: 10px;" />
+				<p:panelGrid id="panel" columns="1" layout="grid">
+					<p:inputText placeholder="Usuário"
+						value="#{loginController.usuario.usuario}" />
+					<p:outputLabel />  
+					<p:inputText placeholder="Senha"
+						value="#{loginController.usuario.senha}" type="password"  />
+					<h:panelGroup style="display:block; text-align:center;">
+						<p:commandButton id="submit" action="#{loginController.login()}"
+							value="Logar" class="botao" title="Logar em PR Anuncios." />
+						<p:commandLink value="Não possui cadastro?" style="float:right;"   
+							action="#{loginController.cadastroUsuario()}"  title="Fazer cadastro em PR Anuncios." />
+					</h:panelGroup>
+				</p:panelGrid>   
+			</div>        
+		</div>  
+		<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+ 
+		<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false"
+			 resizable="false" showHeader="false">
+		    <img src="resources/img/carregar.gif" width="200"/>
+		</p:dialog>
+	</h:form>     
+</body>     
+</html>

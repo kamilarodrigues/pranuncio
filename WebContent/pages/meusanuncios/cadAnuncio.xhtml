@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link href="../../resources/css/css.css" rel="stylesheet" type="text/css" /> 
+    </h:head> 
+    <h:body style="background:#ffffff;">         
+        <h:form id="cadAviso" style="text-align:left;font-size: 11px;">
+			<title>Cadastro de Anúncios</title>          
+            
+            <h:panelGrid columns="1" style="width:95%;margin-left:5%;" >   
+            	<p:outputLabel value="Título"/>
+            	<p:inputText id="titulo" style="width:95%;"/>
+            	<p:outputLabel value=""/> 
+	       		<p:outputLabel value="Descrição"/> 
+	       		<p:inputTextarea value="" id="descricao" rows="3" style="width:95%;" placeholder="Informe uma descrição.."/>
+       		</h:panelGrid>  
+       		<h:panelGrid columns="3" columnClasses="" style="width:95%;margin-left:5%;" >    
+       			<p:outputLabel value="Qntd Estoque"/>
+       			<p:outputLabel value="Valor"/>
+       			<p:outputLabel value=""/>   
+       			
+       			<p:inputText id="estoque" style="width:70%;"/>
+       			<p:inputText id="valor" style="width:70%;text-align:right;">
+       				<f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
+       			</p:inputText>
+       			<h:panelGroup>
+       				<p:selectBooleanCheckbox id="habilitado"
+						value="#" />
+					<p:outputLabel for="habilitado" value="Venda Habilitada"
+						style="margin-left:0.8%;" />
+       			</h:panelGroup>
+       		</h:panelGrid>   
+       		<br/>     
+       		<div align="center">
+                 <p:commandButton icon="ui-icon-check" value="Confirmar" actionListener="#"  />
+                 <p:commandButton icon="ui-icon-close" value="Cancelar" action="#" style="margin-left:2%;"/>
+            </div>
+        </h:form>     
+    </h:body>
+</html>
