@@ -32,8 +32,8 @@ hr {
    
 .centro {
 	margin-top: 64px;
-	position: fixed;
-	background: #ffffff;
+	position: absolute;   
+	background: #ffffff;  
 	width: 85%;
 	margin-left: 14.4%;
 	height: 100%;
@@ -61,8 +61,5 @@ hr {
     border-radius: 2px;
 }
 
-.col-md-4 {
-    width: 33.33333333%;
-}
 
   

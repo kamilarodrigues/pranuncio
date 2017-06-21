@@ -41,6 +41,8 @@ public class Anuncio implements Serializable {
 	private Date dataanuncio;
 	@Column
 	private String categoria;
+	@Column
+	private String imagem;
 	@ManyToOne
 	@JoinColumn(name = "usuario_idusuario")
 	private Usuario usuario;

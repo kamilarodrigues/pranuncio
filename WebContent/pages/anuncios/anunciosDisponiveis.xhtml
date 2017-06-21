@@ -6,52 +6,64 @@
 	xmlns:p="http://primefaces.org/ui">
 <ui:composition template="/pages/templates/default.xhtml">
 	<ui:define name="corpo">
-		<h:form style="color:#00354B;font-size:12px;"> 
-			<script src="../../resources/js/calendario.js" />   
+		<h:form>
+			<script src="../../resources/js/calendario.js" />
 			<br />
-			<p:accordionPanel style="width: 93%; margin-left: 1%;border: 1px solid #dddddd;">
-				<p:tab title="Pesquisar" >  
-					<p:panelGrid columns="4" style="width:98%;margin-left:1%;" 
+			<p:accordionPanel id="painelPesquisa"
+				style="width: 93%; margin-left: 1%;border: 1px solid #dddddd;">
+				<p:tab title="Pesquisar">
+					<p:panelGrid columns="4" style="width:98%;margin-left:1%;"
 						columnClasses="tamanho34, tamanho20, tamanho20, tamanho20">
-						<p:outputLabel value="Título/Descrição" />
-						<p:outputLabel value="Período de Início" />
-						<p:outputLabel value="Margem de valor" />
+						<p:outputLabel value="Título/Descrição"
+							style="color:#00354B;font-size:12px;" />
+						<p:outputLabel value="Período de Início"
+							style="color:#00354B;font-size:12px;" />
+						<p:outputLabel value="Margem de valor"
+							style="color:#00354B;font-size:12px;" />
 						<p:outputLabel />
-						
-						<p:inputText id="titulodescricao" value="#{anunciosController.titulodescricao}" 
-							placeholder="Título/Descrição"/>
+
+						<p:inputText id="titulodescricao"
+							value="#{anunciosController.titulodescricao}"
+							placeholder="Título/Descrição" />
 						<h:panelGroup>
 							<p:panelGrid columns="2">
-								<p:calendar id="datainicial" effect="fold" style="width:50%;margin-left:-14%;"
-									value="#{anunciosController.dataanuncioinicial}"
-									locale="pt" pattern="dd/MM/yyyy" mask="true" maxlength="15">
-									<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+								<p:calendar id="datainicial" effect="fold"
+									style="width:50%;margin-left:-14%;"
+									value="#{anunciosController.dataanuncioinicial}" locale="pt"
+									pattern="dd/MM/yyyy" mask="true" maxlength="15">
+									<f:convertDateTime pattern="dd/MM/yyyy"
+										timeZone="America/Sao_Paulo" />
 								</p:calendar>
 								<p:calendar id="dataFinal" effect="fold" style="width:50%;"
-									value="#{anunciosController.dataanunciofinal}"    
-									locale="pt" pattern="dd/MM/yyyy" mask="true" maxlength="15">
-									<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+									value="#{anunciosController.dataanunciofinal}" locale="pt"
+									pattern="dd/MM/yyyy" mask="true" maxlength="15">
+									<f:convertDateTime pattern="dd/MM/yyyy"
+										timeZone="America/Sao_Paulo" />
 								</p:calendar>
-							</p:panelGrid>    
+							</p:panelGrid>
 						</h:panelGroup>
 						<h:panelGroup>
 							<p:inputText id="valorinicial" placeholder="R$ 0,00"
 								value="#{anunciosController.valorinicial}"
 								style="width:40%;text-align: right;">
-								<f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
+								<f:convertNumber pattern="##,###,###,###.##"
+									minFractionDigits="2" />
 							</p:inputText>
 							<p:inputText id="valorfinal" placeholder="R$ 0,00"
 								value="#{anunciosController.valorfinal}"
 								style="width:40%;text-align: right;margin-left:2%;">
-								<f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
+								<f:convertNumber pattern="##,###,###,###.##"
+									minFractionDigits="2" />
 							</p:inputText>
 						</h:panelGroup>
 						<h:panelGroup>
 							<p:commandButton id="btnPesquisar" value="Pesquisar"
+								update="anuncios:j_idt33:tabelaAnuncio"
 								action="#{anunciosController.pesquisar()}" icon="ui-icon-search" />
-							<p:commandButton id="btnNovo" value="Limpar"
-								action="#" icon="ui-icon-arrowrefresh-1-w" />
-						</h:panelGroup>
+							<p:commandButton id="btnNovo" value="Limpar" update="painelPesquisa"
+								action="#{anunciosController.limpar()}"
+								icon="ui-icon-arrowrefresh-1-w" />
+						</h:panelGroup>  
 					</p:panelGrid> 
 				</p:tab>
 			</p:accordionPanel>
@@ -59,63 +71,68 @@
 			<p:outputLabel value="Anúncios"
 				style="font-size:24px;font-variant: super;color:#00338C;" />
 			<div align="right" style="width: 93%; margin-left: 1%;">
-				<p:commandButton id="btnNovo" value="Novo Anúncio"
-					action="#"
+				<p:commandButton id="btnNovo" value="Novo Anúncio" action="#"
 					icon="ui-icon-plusthick" />
 			</div>
 			<br />
-			<p:scrollPanel id="tabelaAnuncios" mode="native"
-				style="width:98%;text-aling:left;">
-				<br /> 
-				<div align="left">
-					<ui:repeat value="#{anunciosController.listaAnuncios}" var="anuncio">
-						<div class="col-md-4" style="width:450px;">
-							<div class="borderSombra" style="height:320px;">
-								<h:panelGroup>
+			<p:scrollPanel id="tabelaAnuncio" mode="native" style="width:98%;">
+				<br />
+				<div>
+					<ui:repeat value="#{anunciosController.listaAnuncios}"
+						var="anuncio">
+						<div class="col-md-4"
+							style="width: 330px; float: left; padding:18px 15px; color: #00354B; font-size: 12px;">
+							<div class="borderSombra" style="height: 320px;">
+								<h:panelGroup>  
 									<h:panelGrid columns="1" style="width:95%;margin-left:4%;">
 										<br />
 										<h:panelGroup>
 											<h:panelGrid columns="2" columnClasses="tamanho5,colunaBotao"
-												style="width:99%;margin-left:0.5%;">
+												style="width:99%">
 												<p:outputLabel value="#{anuncio.titulo}"
-													style="font-size:16px;" />
+													style="font-size:18px;" />
 											</h:panelGrid>
 										</h:panelGroup>
 									</h:panelGrid>
 									<h:panelGrid columns="1" style="width:95%;margin-left:4%;"
 										columnClasses="tamanho98">
 										<h:panelGroup>
-											<p:outputLabel
-												value="#{anunciosController.retornarValorTotal(anuncio.valor)}"
-												style="font-size:30px;color:#A0C637;margin-left:1%;">
-											</p:outputLabel>
+											<div align="center">
+												<p:outputLabel
+													value="#{anunciosController.retornarValorTotal(anuncio.valor)}"
+													style="font-size:35px;color:#A0C637;">
+												</p:outputLabel>
+											</div>
 										</h:panelGroup>
 										<br />
+										<p:outputLabel value="Categoria: #{anuncio.categoria}"
+											style="font-size:12px;font-weight: initial;aling:center;" />
 										<p:outputLabel value="Responsável: #{anuncio.usuario.nome}"
-											style="font-size:13px;font-weight: initial;aling:center;" />
+											style="font-size:12px;font-weight: initial;aling:center;" />
 									</h:panelGrid>
 									<br />
 									<div align="center">
 										<p:commandButton value="Saiba Mais" class="botao"
 											title="Mais informações sobre este pacote"
-											style="font-size:13px;" icon="ui-icon-info" />
+											style="font-size:13px;width:38%;" icon="ui-icon-info" />
 									</div>
 								</h:panelGroup>
 							</div>
-						</div>
+						</div> 
 					</ui:repeat>
+					<br />
 				</div>
 			</p:scrollPanel>
 			<style>
-				.centro {   
-					margin-top: 64px; 
-					position: fixed;
-					background: #ffffff;
-					width:85%;
-					margin-left: 14.4%;   
-					height:100%;  
-				}  
-			</style>
+.centro {
+	margin-top: 64px;
+	position: absolute;
+	background: #ffffff;
+	width: 85%;
+	margin-left: 14.4%;
+	height: 100%;
+}
+</style>
 		</h:form>
 	</ui:define>
 </ui:composition>

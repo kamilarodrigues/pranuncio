@@ -24,9 +24,9 @@ body {
 
 .centro {
 	margin-top: 64px; 
-	position: fixed;
+	position: absolute;
 	background: #FF7256;
-	width:85%;
+	width:85%;   
 	margin-left: 14.4%;   
 	height:100%;  
 }  
@@ -72,8 +72,7 @@ input {
 	border: none;
 }
 
-.ui-widget-content {
-    border: 1px solid #dddddd;
+.ui-widget-content { 
     background:transparent;
     border:none;
     color: #ffffff;
@@ -106,10 +105,7 @@ input {
     box-shadow: 5px 5px 10px #D7D8DC;
     -webkit-box-shadow: 5px 5px 10px #D7D8DC;
     -moz-box-shadow: 5px 5px 10px #0076a3; 
-    background: #f5f3e5;
+    background: #f5f3e5;  
 } 
-
-.col-md-4 {
-    width: 33.33333333%;
-}
+    
 
