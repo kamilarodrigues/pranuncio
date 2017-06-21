@@ -108,3 +108,8 @@ input {
     -moz-box-shadow: 5px 5px 10px #0076a3; 
     background: #f5f3e5;
 } 
+
+.col-md-4 {
+    width: 33.33333333%;
+}
+

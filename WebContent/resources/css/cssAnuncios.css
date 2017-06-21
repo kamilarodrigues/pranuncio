@@ -60,4 +60,9 @@ hr {
     color: #ffffff;  
     border-radius: 2px;
 }
+
+.col-md-4 {
+    width: 33.33333333%;
+}
+
   

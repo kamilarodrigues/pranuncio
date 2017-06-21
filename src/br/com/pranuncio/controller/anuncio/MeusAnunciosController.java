@@ -1,7 +1,7 @@
-package br.com.pranuncio.controller;
+package br.com.pranuncio.controller.anuncio;
    
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +32,7 @@ public class MeusAnunciosController implements Serializable {
 	private LoginController loginController; 
 	@Inject
 	private AnuncioService anuncioService;
-	private List<Anuncio> listaAnuncios;
+	private List<Anuncio> listaAnuncios; 
 	
 	@PostConstruct
 	public void init() {
@@ -66,9 +66,12 @@ public class MeusAnunciosController implements Serializable {
 	}
 
 
+
+
 	public String cadAnuncio() {  
 		Map<String, Object> options = new HashMap<String, Object>();
 		options.put("contentWidth", 550); 
+		options.put("modal", true);
 		RequestContext.getCurrentInstance().openDialog("cadAnuncio", options, null);
 		return "";
 	}   
@@ -77,8 +80,15 @@ public class MeusAnunciosController implements Serializable {
 		String sql = "Select a From Anuncio a"
 				+ " where a.usuario.idusuario="+loginController.getUsuario().getIdusuario()+" order by a.dataanuncio desc";
 		listaAnuncios = anuncioService.meusAnuncios(sql);
-		if(listaAnuncios==null){
+		if(listaAnuncios==null && listaAnuncios.size()==0){
 			listaAnuncios = new ArrayList<>();
+		}else{
+			int idusuario = loginController.getUsuario().getIdusuario();
+			for (int i = 0; i < listaAnuncios.size(); i++) {
+				if(listaAnuncios.get(i).getUsuario().getIdusuario()==idusuario){
+					listaAnuncios.get(i).setResponsavelanuncio(true);
+				}
+			}
 		}
 	} 
 	
@@ -88,6 +98,7 @@ public class MeusAnunciosController implements Serializable {
 		session.setAttribute("anuncio", anuncio);
 		Map<String, Object> options = new HashMap<String, Object>();
 		options.put("contentWidth", 550); 
+		options.put("modal", true);
 		RequestContext.getCurrentInstance().openDialog("cadAnuncio", options, null);
 		return "";
 	}

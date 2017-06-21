@@ -11,10 +11,23 @@
         <h:form id="cadAviso" style="text-align:left;font-size: 11px;">
 			<title>Cadastro de Anúncios</title>          
             <p:growl id="growl" showDetail="true" sticky="false" life="20000" />
-            <h:panelGrid columns="1" style="width:95%;margin-left:5%;" >   
+            <h:panelGrid columns="2" columnClasses="" style="width:95%;margin-left:5%;" >   
             	<p:outputLabel value="Título"/>
+            	<p:outputLabel value="Categoria"/>
             	<p:inputText id="titulo" value="#{cadAnuncioController.anuncio.titulo}" style="width:95%;"/>
-            	<p:outputLabel value=""/> 
+            	<p:selectOneMenu id="categoria" value="#{cadAnuncioController.anuncio.categoria}"
+					style="width:95px;">
+					<f:selectItem itemLabel="Acessórios" itemValue="Acessórios" />
+					<f:selectItem itemLabel="Brinquedos" itemValue="Brinquedos" /> 
+					<f:selectItem itemLabel="Eletrônicos" itemValue="Eletrônicos" />
+					<f:selectItem itemLabel="Eletrodomésticos" itemValue="Eletrodomésticos" /> 
+					<f:selectItem itemLabel="Ferramentas" itemValue="Ferramentas" />
+					<f:selectItem itemLabel="Maquiagens" itemValue="Maquiagens" /> 
+					<f:selectItem itemLabel="Móveis e Decoração" itemValue="Móveis e Decoração" /> 
+					<p:ajax event="change" />
+				</p:selectOneMenu>
+            </h:panelGrid>  	 
+            <h:panelGrid columns="1" style="width:95%;margin-left:5%;" >   
 	       		<p:outputLabel value="Descrição"/> 
 	       		<p:inputTextarea value="#{cadAnuncioController.anuncio.descricao}" id="descricao" rows="3" style="width:95%;" placeholder="Informe uma descrição.."/>
        		</h:panelGrid>  

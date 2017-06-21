@@ -6,69 +6,117 @@
 	xmlns:p="http://primefaces.org/ui">
 <ui:composition template="/pages/templates/default.xhtml">
 	<ui:define name="corpo">
-		<h:form>
-			<link href="../../resources/css/cssAnuncios.css" rel="stylesheet" />
+		<h:form style="color:#00354B;font-size:12px;"> 
+			<script src="../../resources/js/calendario.js" />   
 			<br />
+			<p:accordionPanel style="width: 93%; margin-left: 1%;border: 1px solid #dddddd;">
+				<p:tab title="Pesquisar" >  
+					<p:panelGrid columns="4" style="width:98%;margin-left:1%;" 
+						columnClasses="tamanho34, tamanho20, tamanho20, tamanho20">
+						<p:outputLabel value="Título/Descrição" />
+						<p:outputLabel value="Período de Início" />
+						<p:outputLabel value="Margem de valor" />
+						<p:outputLabel />
+						
+						<p:inputText id="titulodescricao" value="#{anunciosController.titulodescricao}" 
+							placeholder="Título/Descrição"/>
+						<h:panelGroup>
+							<p:panelGrid columns="2">
+								<p:calendar id="datainicial" effect="fold" style="width:50%;margin-left:-14%;"
+									value="#{anunciosController.dataanuncioinicial}"
+									locale="pt" pattern="dd/MM/yyyy" mask="true" maxlength="15">
+									<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+								</p:calendar>
+								<p:calendar id="dataFinal" effect="fold" style="width:50%;"
+									value="#{anunciosController.dataanunciofinal}"    
+									locale="pt" pattern="dd/MM/yyyy" mask="true" maxlength="15">
+									<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+								</p:calendar>
+							</p:panelGrid>    
+						</h:panelGroup>
+						<h:panelGroup>
+							<p:inputText id="valorinicial" placeholder="R$ 0,00"
+								value="#{anunciosController.valorinicial}"
+								style="width:40%;text-align: right;">
+								<f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
+							</p:inputText>
+							<p:inputText id="valorfinal" placeholder="R$ 0,00"
+								value="#{anunciosController.valorfinal}"
+								style="width:40%;text-align: right;margin-left:2%;">
+								<f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
+							</p:inputText>
+						</h:panelGroup>
+						<h:panelGroup>
+							<p:commandButton id="btnPesquisar" value="Pesquisar"
+								action="#{anunciosController.pesquisar()}" icon="ui-icon-search" />
+							<p:commandButton id="btnNovo" value="Limpar"
+								action="#" icon="ui-icon-arrowrefresh-1-w" />
+						</h:panelGroup>
+					</p:panelGrid> 
+				</p:tab>
+			</p:accordionPanel>
 			<br />
-			<p:outputLabel value="Anúncios"  
+			<p:outputLabel value="Anúncios"
 				style="font-size:24px;font-variant: super;color:#00338C;" />
 			<div align="right" style="width: 93%; margin-left: 1%;">
 				<p:commandButton id="btnNovo" value="Novo Anúncio"
-					action="#{meusAnunciosController.cadAnuncio()}" icon="ui-icon-plusthick" />
+					action="#"
+					icon="ui-icon-plusthick" />
 			</div>
 			<br />
-			<p:scrollPanel id="tabelaAnuncios" mode="native" style="width:98%;text-aling:left;">
-				<br />  
+			<p:scrollPanel id="tabelaAnuncios" mode="native"
+				style="width:98%;text-aling:left;">
+				<br /> 
 				<div align="left">
-					<div class="col-md-4">   
-						<div class="borderSombra" style="height: 320px;">
-							<h:panelGroup>
-								<h:panelGrid columns="1" style="width:95%;margin-left:4%;">
+					<ui:repeat value="#{anunciosController.listaAnuncios}" var="anuncio">
+						<div class="col-md-4" style="width:450px;">
+							<div class="borderSombra" style="height:320px;">
+								<h:panelGroup>
+									<h:panelGrid columns="1" style="width:95%;margin-left:4%;">
+										<br />
+										<h:panelGroup>
+											<h:panelGrid columns="2" columnClasses="tamanho5,colunaBotao"
+												style="width:99%;margin-left:0.5%;">
+												<p:outputLabel value="#{anuncio.titulo}"
+													style="font-size:16px;" />
+											</h:panelGrid>
+										</h:panelGroup>
+									</h:panelGrid>
+									<h:panelGrid columns="1" style="width:95%;margin-left:4%;"
+										columnClasses="tamanho98">
+										<h:panelGroup>
+											<p:outputLabel
+												value="#{anunciosController.retornarValorTotal(anuncio.valor)}"
+												style="font-size:30px;color:#A0C637;margin-left:1%;">
+											</p:outputLabel>
+										</h:panelGroup>
+										<br />
+										<p:outputLabel value="Responsável: #{anuncio.usuario.nome}"
+											style="font-size:13px;font-weight: initial;aling:center;" />
+									</h:panelGrid>
 									<br />
-									<h:panelGroup>
-										<h:panelGrid columns="2" columnClasses="tamanho5,colunaBotao"
-											style="width:99%;margin-left:0.5%;">
-											<p:outputLabel value="#"
-												style="font-size:16px;" />
-										</h:panelGrid>
-									</h:panelGroup>
-									<h:panelGroup>
-										<h:panelGrid columns="2" columnClasses="tamanho5,colunaBotao"
-											style="width:99%;margin-left:0.5%;">
-											<p:outputLabel value="CURSOS DE IDIOMAS"
-												style="font-size:16px;font-weight: initial;" />
-										</h:panelGrid>
-									</h:panelGroup>
-								</h:panelGrid>
-								<h:panelGrid columns="1" style="width:95%;margin-left:4%;"
-									columnClasses="tamanho98">
-									<h:panelGroup>
-										<p:outputLabel value="#"
-											style="font-size:30px;color:#A0C637;margin-left:1%;">
-										</p:outputLabel>
-									</h:panelGroup>
-									<p:outputLabel value="N semana(s)"
-										style="font-size:14px;font-weight: initial;" />
-									<br />
-									<p:outputLabel value="Curso:  "
-										style="font-size:15px;font-weight: initial;" />
-									<p:outputLabel value="Hospedagem: "
-										style="font-size:15px;font-weight: initial;" />
-									<p:outputLabel value="Escola:"
-										style="font-size:15px;font-weight: initial;" />
-								</h:panelGrid>
-								<br />
-								<div align="center">
-									<p:commandButton value="Saiba Mais" class="botao"
-										title="Mais informações sobre este pacote"
-										style="font-size:13px;" icon="ui-icon-info" />    
-								</div> 
-							</h:panelGroup>   
+									<div align="center">
+										<p:commandButton value="Saiba Mais" class="botao"
+											title="Mais informações sobre este pacote"
+											style="font-size:13px;" icon="ui-icon-info" />
+									</div>
+								</h:panelGroup>
+							</div>
 						</div>
-					</div>
-				</div> 
+					</ui:repeat>
+				</div>
 			</p:scrollPanel>
-		</h:form>     
+			<style>
+				.centro {   
+					margin-top: 64px; 
+					position: fixed;
+					background: #ffffff;
+					width:85%;
+					margin-left: 14.4%;   
+					height:100%;  
+				}  
+			</style>
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>

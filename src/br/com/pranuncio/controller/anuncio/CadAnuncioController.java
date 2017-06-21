@@ -1,4 +1,4 @@
-package br.com.pranuncio.controller;
+package br.com.pranuncio.controller.anuncio;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.primefaces.context.RequestContext;
 
+import br.com.pranuncio.controller.LoginController;
 import br.com.pranuncio.entity.Anuncio;
 import br.com.pranuncio.service.AnuncioService;
 import br.com.pranuncio.util.Mensagem;

@@ -29,7 +29,7 @@
 						value="#{loginController.usuario.senha}" type="password"  />
 					<h:panelGroup style="display:block; text-align:center;">
 						<p:commandButton id="submit" action="#{loginController.login()}"
-							value="Logar" class="botao" title="Logar em PR Anuncios." />
+							value="Logar" class="botao" title="Logar em PR Anuncios." update="growl"/>
 						<p:commandLink value="Não possui cadastro?" style="float:right;"   
 							action="#{loginController.cadastroUsuario()}"  title="Fazer cadastro em PR Anuncios." />
 					</h:panelGroup>

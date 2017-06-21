@@ -39,9 +39,13 @@ public class Anuncio implements Serializable {
 	private String descricao;
 	@Column
 	private Date dataanuncio;
+	@Column
+	private String categoria;
 	@ManyToOne
 	@JoinColumn(name = "usuario_idusuario")
 	private Usuario usuario;
+	@Transient
+	private boolean responsavelanuncio;
 
 	public Integer getIdanuncio() {
 		return idanuncio;
@@ -113,6 +117,22 @@ public class Anuncio implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public boolean isResponsavelanuncio() {
+		return responsavelanuncio;
+	}
+
+	public void setResponsavelanuncio(boolean responsavelanuncio) {
+		this.responsavelanuncio = responsavelanuncio;
 	}
 
 	@Override
