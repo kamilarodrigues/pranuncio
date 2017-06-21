@@ -43,15 +43,16 @@ input {
 }
 
 .botao {
-	background: #003363;
-	color: #ffffff;
-	font-size: 15px;
-	width: 100%; border : none;
-	font-weight: bold;
-	border: none;   
+	background: #003363 !important;
+	color: #ffffff !important;
+	font-size: 15px !important;
+	width: 100%; border : none !important;
+	font-weight: bold !important;
+	border: none !important;   
+	padding: 4px 22px;   
 }
 
-.ui-grid {
+.ui-grid {  
 	clear: both;
 	padding: 0;
 	margin: 0;

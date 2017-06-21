@@ -18,7 +18,7 @@ import javax.persistence.Transient;
 public class Usuario implements Serializable {
 	
 	@Transient
-	public static final String FIND_BY_EMAIL_SENHA = "Usuario.findByEmailSenha";
+	public static final String FIND_BY_NOME_SENHA = "Usuario.findByNomeSenha";
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

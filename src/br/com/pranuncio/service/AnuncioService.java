@@ -32,9 +32,8 @@ public class AnuncioService {
 		} 
 	}
 	
-	public List<Anuncio> meusAnuncios(int idusuario) {
-		Query q = entityManager.createNamedQuery(Anuncio.CONSULTAR_MEUS_ANUNCIOS); 
-		q.setParameter("idusuario", idusuario);
+	public List<Anuncio> meusAnuncios(String sql) {
+		Query q = entityManager.createQuery(sql);  
 		List<Anuncio> anuncios = q.getResultList(); 
 		if (anuncios!=null) {
 			return anuncios;

@@ -21,7 +21,7 @@ public class UsuarioService {
 	private EntityManager entityManager;
 
 	public Usuario pesquisarPorNomeSenha(Usuario usuario) {
-		Query q = entityManager.createNamedQuery(Usuario.FIND_BY_EMAIL_SENHA);
+		Query q = entityManager.createNamedQuery(Usuario.FIND_BY_NOME_SENHA);
 		q.setParameter("usuario", usuario.getUsuario());
 		q.setParameter("senha", criptografiaMd5(usuario.getSenha()));
 		List<Usuario> usuarios = q.getResultList();

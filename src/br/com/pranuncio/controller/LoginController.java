@@ -56,7 +56,7 @@ public class LoginController implements Serializable {
 		} else {
 			usuario = new Usuario();
 			logado = false;
-			Mensagem.lancarMensagemErro("Atenção!", "Usuário ou senha inválidos."); 
+			Mensagem.lancarMensagemErro("Atenção! Usuário ou senha inválidos.", ""); 
 	        return "";
 		} 
 	}

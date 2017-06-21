@@ -9,13 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery; 
+import javax.persistence.ManyToOne; 
 
 @SuppressWarnings("serial")
-@Entity
-@NamedQuery(name="Acessoanuncio.listar", query="select a from Acessoanuncio a "
-		+ "where a.acesso.idacesso=:idacesso and a.dataacesso=':data'")
+@Entity 
 public class Acessoanuncio implements Serializable {
 	
 	@Id

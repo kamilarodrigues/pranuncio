@@ -10,34 +10,35 @@
     <h:body style="background:#ffffff;">         
         <h:form id="cadAviso" style="text-align:left;font-size: 11px;">
 			<title>Cadastro de Anúncios</title>          
-            
+            <p:growl id="growl" showDetail="true" sticky="false" life="20000" />
             <h:panelGrid columns="1" style="width:95%;margin-left:5%;" >   
             	<p:outputLabel value="Título"/>
-            	<p:inputText id="titulo" style="width:95%;"/>
+            	<p:inputText id="titulo" value="#{cadAnuncioController.anuncio.titulo}" style="width:95%;"/>
             	<p:outputLabel value=""/> 
 	       		<p:outputLabel value="Descrição"/> 
-	       		<p:inputTextarea value="" id="descricao" rows="3" style="width:95%;" placeholder="Informe uma descrição.."/>
+	       		<p:inputTextarea value="#{cadAnuncioController.anuncio.descricao}" id="descricao" rows="3" style="width:95%;" placeholder="Informe uma descrição.."/>
        		</h:panelGrid>  
        		<h:panelGrid columns="3" columnClasses="" style="width:95%;margin-left:5%;" >    
        			<p:outputLabel value="Qntd Estoque"/>
        			<p:outputLabel value="Valor"/>
        			<p:outputLabel value=""/>   
        			
-       			<p:inputText id="estoque" style="width:70%;"/>
-       			<p:inputText id="valor" style="width:70%;text-align:right;">
+       			<p:inputText id="estoque" value="#{cadAnuncioController.anuncio.estoque}" style="width:70%;text-aling:right;"/>
+       			<p:inputText id="valor" value="#{cadAnuncioController.anuncio.valor}" style="width:70%;text-align:right;">
        				<f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
        			</p:inputText>
        			<h:panelGroup>
        				<p:selectBooleanCheckbox id="habilitado"
-						value="#" />
-					<p:outputLabel for="habilitado" value="Venda Habilitada"
+						value="#{cadAnuncioController.anuncio.habilitado}" />
+					<p:outputLabel for="habilitado" value="Anúncio Habilitado"
 						style="margin-left:0.8%;" />
        			</h:panelGroup>
        		</h:panelGrid>   
        		<br/>     
        		<div align="center">
-                 <p:commandButton icon="ui-icon-check" value="Confirmar" actionListener="#"  />
-                 <p:commandButton icon="ui-icon-close" value="Cancelar" action="#" style="margin-left:2%;"/>
+                 <p:commandButton icon="ui-icon-check" value="Confirmar" actionListener="#{cadAnuncioController.salvar()}" update="growl" />
+                 <p:commandButton icon="ui-icon-close" value="Cancelar" action="#{cadAnuncioController.cancelar()}"
+				 	update="growl" style="margin-left:2%;"/>
             </div>
         </h:form>     
     </h:body>

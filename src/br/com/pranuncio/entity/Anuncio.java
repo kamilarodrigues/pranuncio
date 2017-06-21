@@ -12,26 +12,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Transient; 
+import javax.persistence.Transient;
 
 @SuppressWarnings("serial")
 @Entity
-@NamedQueries({
-	@NamedQuery(name="Anuncio.consultarHabilitados", query="select a from Anuncio a " 
-		+ "where a.habilitado=TRUE and a.vendido=FALSE"),
-	@NamedQuery(name="Anuncio.consultarMeusAnuncios", query="select a from Anuncio a "
-		+ "where a.usuario.idusuario=:idusuario order by a.dataanuncio desc")
-})
+@NamedQueries({ @NamedQuery(name = "Anuncio.consultarHabilitados", query = "select a from Anuncio a "
+		+ "where a.habilitado=TRUE and a.vendido=FALSE") })
 public class Anuncio implements Serializable {
-	
+
 	@Transient
 	public static final String CONSULTAR_HABILITADOS = "Usuario.consultarHabilitados";
-	@Transient
-	public static final String CONSULTAR_MEUS_ANUNCIOS = "Usuario.consultarMeusAnuncios";
-	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer idanuncio;  
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer idanuncio;
 	@Column
 	private float valor;
 	@Column
@@ -47,9 +40,9 @@ public class Anuncio implements Serializable {
 	@Column
 	private Date dataanuncio;
 	@ManyToOne
-	@JoinColumn(name="usuario_idusuario")
-	private Usuario usuario;  
-  
+	@JoinColumn(name = "usuario_idusuario")
+	private Usuario usuario;
+
 	public Integer getIdanuncio() {
 		return idanuncio;
 	}
@@ -123,27 +116,29 @@ public class Anuncio implements Serializable {
 	}
 
 	@Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idanuncio != null ? idanuncio.hashCode() : 0);
-        return hash;
-    }
+	public int hashCode() {
+		int hash = 0;
+		hash += (idanuncio != null ? idanuncio.hashCode() : 0);
+		return hash;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Anuncio)) {
-            return false;
-        }
-        Anuncio other = (Anuncio) object;
-        if ((this.idanuncio == null && other.idanuncio != null) || (this.idanuncio != null && !this.idanuncio.equals(other.idanuncio))) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if (!(object instanceof Anuncio)) {
+			return false;
+		}
+		Anuncio other = (Anuncio) object;
+		if ((this.idanuncio == null && other.idanuncio != null)
+				|| (this.idanuncio != null && !this.idanuncio.equals(other.idanuncio))) {
+			return false;
+		}
+		return true;
+	}
 
-    @Override
-    public String toString() {
-        return "br.com.pranuncio.entity.Anuncio[ idanuncio=" + idanuncio + " ]";
-    } 
+	@Override
+	public String toString() {
+		return "br.com.pranuncio.entity.Anuncio[ idanuncio=" + idanuncio + " ]";
+	}
 }
