@@ -29,6 +29,7 @@ body {
 	width:85%;   
 	margin-left: 14.4%;   
 	height:100%;  
+	z-index: -1;  
 }  
 
 .dadosmenu {  
@@ -71,13 +72,7 @@ input {
 	margin: 0;
 	border: none;
 }
-
-.ui-widget-content { 
-    background:transparent;
-    border:none;
-    color: #ffffff;
-}
-
+ 
 .btnMenu :HOVER{
     border: 1px solid #dddddd;
     background:#004e6f;
@@ -97,8 +92,20 @@ input {
 	width:80%;
 }
 
+.tamanho70{
+	width:70%;
+}
+
+.tamanho30{
+	width:30%;
+}
+
 .tamanho20{
 	width:20%;
+} 
+
+.tamanho50{
+	width:50%;
 } 
 
 .borderSombra {

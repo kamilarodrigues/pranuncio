@@ -41,7 +41,7 @@ public class AnunciosController implements Serializable {
 	private Date dataanuncioinicial;
 	private Date dataanunciofinal;
 	private float valorinicial;
-	private float valorfinal;
+	private float valorfinal; 
 	
 	@PostConstruct
 	public void init() {
@@ -163,7 +163,7 @@ public class AnunciosController implements Serializable {
 		if(categoria!=null && categoria.length()>2){
 			sql = sql + " and a.categoria='"+categoria+"'";
 		}
-		if(titulodescricao!=null && titulodescricao.length()>2){
+		if(titulodescricao!=null && titulodescricao.length()>0){
 			sql = sql + " and (a.titulo like '%"+titulodescricao+"%' or a.descricao like '%"+titulodescricao+"%')";
 		}
 		if(dataanuncioinicial!=null && dataanunciofinal!=null){
@@ -196,21 +196,40 @@ public class AnunciosController implements Serializable {
 		RequestContext.getCurrentInstance().openDialog("cadAnuncio", options, null);
 		return "";
 	} 
-	
+	   
 	public String retornarValorTotal(float valor){
 		NumberFormat format = new DecimalFormat("#,###.##");
 		format.setMinimumFractionDigits(2);
 		String valorFormatado = format.format(valor);
-		valorFormatado = "R$"+valorFormatado;
+		valorFormatado = "R$ "+valorFormatado;
 		return valorFormatado;
 	}
 	
 	public void limpar(){
+		categoria = null;
 		titulodescricao = null;
 		dataanunciofinal=null;
 		dataanuncioinicial=null;
 		valorinicial=0;
-		valorinicial=0;
+		valorfinal=0;
 		listarAnuncios();
+	}
+	
+	public String saibaMais(Anuncio anuncio) { 
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+		session.setAttribute("anuncio", anuncio);
+		Map<String, Object> options = new HashMap<String, Object>();
+		options.put("contentWidth", 650); 
+		options.put("modal", true);
+		RequestContext.getCurrentInstance().openDialog("saibaMais", options, null);
+		return "";
+	} 
+	
+	public String retornarImagem(Anuncio anuncio){
+		if(anuncio.getImagem()!=null && anuncio.getImagem().length()>0){ 
+	        String nomeArquivo = "../../resources/img/anuncios/"+anuncio.getImagem();
+	        return nomeArquivo;
+		}else return ""; 
 	}
 }

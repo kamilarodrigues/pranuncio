@@ -62,13 +62,15 @@ public class AnuncioService {
 	}
 	
 	@Transactional
-	public void incluir(Anuncio anuncio) {
+	public Anuncio incluir(Anuncio anuncio) {
 		entityManager.persist(anuncio);
+		return anuncio;
 	}
 	
 	@Transactional
-	public void alterar(Anuncio anuncio) {
+	public Anuncio alterar(Anuncio anuncio) {
 		entityManager.merge(anuncio);
+		return anuncio;
 	}
 	
 	@Transactional

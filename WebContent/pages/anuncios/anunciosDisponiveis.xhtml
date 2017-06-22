@@ -8,23 +8,40 @@
 	<ui:define name="corpo">
 		<h:form>
 			<script src="../../resources/js/calendario.js" />
-			<br />
+			<br /><br />
 			<p:accordionPanel id="painelPesquisa"
 				style="width: 93%; margin-left: 1%;border: 1px solid #dddddd;">
 				<p:tab title="Pesquisar">
 					<p:panelGrid columns="4" style="width:98%;margin-left:1%;"
-						columnClasses="tamanho34, tamanho20, tamanho20, tamanho20">
+						columnClasses="tamanho20, tamanho34, tamanho20, tamanho20">
+						<p:outputLabel value="Categoria"
+							style="color:#00354B;font-size:12px;" />
 						<p:outputLabel value="Título/Descrição"
 							style="color:#00354B;font-size:12px;" />
-						<p:outputLabel value="Período de Início"
+						<p:outputLabel value="Período de Venda"
 							style="color:#00354B;font-size:12px;" />
 						<p:outputLabel value="Margem de valor"
 							style="color:#00354B;font-size:12px;" />
-						<p:outputLabel />
 
+						<p:selectOneMenu id="categoria"
+							value="#{anunciosController.categoria}" style="width:80%;">
+							<f:selectItem itemLabel="Selecione" itemValue="0" />
+							<f:selectItem itemLabel="Acessórios" itemValue="Acessórios" />
+							<f:selectItem itemLabel="Brinquedos" itemValue="Brinquedos" />
+							<f:selectItem itemLabel="Eletrônicos" itemValue="Eletrônicos" />
+							<f:selectItem itemLabel="Eletrodomésticos"
+								itemValue="Eletrodomésticos" />
+							<f:selectItem itemLabel="Ferramentas" itemValue="Ferramentas" />
+							<f:selectItem itemLabel="Maquiagens" itemValue="Maquiagens" />
+							<f:selectItem itemLabel="Móveis e Decoração"
+								itemValue="Móveis e Decoração" />
+							<p:ajax event="change" />
+						</p:selectOneMenu>
 						<p:inputText id="titulodescricao"
 							value="#{anunciosController.titulodescricao}"
-							placeholder="Título/Descrição" />
+							placeholder="Título/Descrição">
+							<p:ajax event="change" />
+						</p:inputText>
 						<h:panelGroup>
 							<p:panelGrid columns="2">
 								<p:calendar id="datainicial" effect="fold"
@@ -33,12 +50,14 @@
 									pattern="dd/MM/yyyy" mask="true" maxlength="15">
 									<f:convertDateTime pattern="dd/MM/yyyy"
 										timeZone="America/Sao_Paulo" />
+									<p:ajax event="change" />
 								</p:calendar>
 								<p:calendar id="dataFinal" effect="fold" style="width:50%;"
 									value="#{anunciosController.dataanunciofinal}" locale="pt"
 									pattern="dd/MM/yyyy" mask="true" maxlength="15">
 									<f:convertDateTime pattern="dd/MM/yyyy"
 										timeZone="America/Sao_Paulo" />
+									<p:ajax event="change" />
 								</p:calendar>
 							</p:panelGrid>
 						</h:panelGroup>
@@ -48,23 +67,26 @@
 								style="width:40%;text-align: right;">
 								<f:convertNumber pattern="##,###,###,###.##"
 									minFractionDigits="2" />
+								<p:ajax event="change" />
 							</p:inputText>
 							<p:inputText id="valorfinal" placeholder="R$ 0,00"
 								value="#{anunciosController.valorfinal}"
 								style="width:40%;text-align: right;margin-left:2%;">
 								<f:convertNumber pattern="##,###,###,###.##"
 									minFractionDigits="2" />
+								<p:ajax event="change" />
 							</p:inputText>
 						</h:panelGroup>
-						<h:panelGroup>
-							<p:commandButton id="btnPesquisar" value="Pesquisar"
-								update="anuncios:j_idt33:tabelaAnuncio"
-								action="#{anunciosController.pesquisar()}" icon="ui-icon-search" />
-							<p:commandButton id="btnNovo" value="Limpar" update="painelPesquisa"
-								action="#{anunciosController.limpar()}"
-								icon="ui-icon-arrowrefresh-1-w" />
-						</h:panelGroup>  
-					</p:panelGrid> 
+					</p:panelGrid>
+					<h:panelGroup >
+						<p:commandButton id="btnLimpar" value="Limpar"
+							update="painelPesquisa, anuncios:j_idt33:tabelaAnuncio" action="#{anunciosController.limpar()}"
+							icon="ui-icon-arrowrefresh-1-w" style="float:right;margin-right: 4.8%;"/>
+						<p:commandButton id="btnPesquisar" value="Pesquisar"
+							update="anuncios:j_idt33:tabelaAnuncio"  style="float:right;"
+							action="#{anunciosController.pesquisar()}" icon="ui-icon-search" />
+						
+					</h:panelGroup>
 				</p:tab>
 			</p:accordionPanel>
 			<br />
@@ -73,17 +95,15 @@
 			<div align="right" style="width: 93%; margin-left: 1%;">
 				<p:commandButton id="btnNovo" value="Novo Anúncio" action="#"
 					icon="ui-icon-plusthick" />
-			</div>
-			<br />
-			<p:scrollPanel id="tabelaAnuncio" mode="native" style="width:98%;">
-				<br />
+			</div> 
+			<p:scrollPanel id="tabelaAnuncio" mode="native" style="width:98%;"> 
 				<div>
 					<ui:repeat value="#{anunciosController.listaAnuncios}"
 						var="anuncio">
 						<div class="col-md-4"
-							style="width: 330px; float: left; padding:18px 15px; color: #00354B; font-size: 12px;">
+							style="width: 330px; float: left; padding: 18px 15px; color: #00354B; font-size: 12px;">
 							<div class="borderSombra" style="height: 320px;">
-								<h:panelGroup>  
+								<h:panelGroup>
 									<h:panelGrid columns="1" style="width:95%;margin-left:4%;">
 										<br />
 										<h:panelGroup>
@@ -98,6 +118,8 @@
 										columnClasses="tamanho98">
 										<h:panelGroup>
 											<div align="center">
+												<img src="#{anunciosController.retornarImagem(anuncio)}" width="95"/>
+												<br/>
 												<p:outputLabel
 													value="#{anunciosController.retornarValorTotal(anuncio.valor)}"
 													style="font-size:35px;color:#A0C637;">
@@ -112,13 +134,13 @@
 									</h:panelGrid>
 									<br />
 									<div align="center">
-										<p:commandButton value="Saiba Mais" class="botao"
-											title="Mais informações sobre este pacote"
+										<p:commandButton id="btnSaibaMais" value="Saiba Mais" class="botao"
+											action="#{anunciosController.saibaMais(anuncio)}" title="Mais informações sobre este pacote"
 											style="font-size:13px;width:38%;" icon="ui-icon-info" />
 									</div>
 								</h:panelGroup>
-							</div>
-						</div> 
+							</div>  
+						</div>
 					</ui:repeat>
 					<br />
 				</div>
@@ -131,8 +153,14 @@
 	width: 85%;
 	margin-left: 14.4%;
 	height: 100%;
+	z-index: -1;
 }
-</style>
+.ui-widget-content {
+	background: #ffffff;  
+	border: transparent;     
+	color: #00354b;   
+}
+</style>  
 		</h:form>
 	</ui:define>
 </ui:composition>

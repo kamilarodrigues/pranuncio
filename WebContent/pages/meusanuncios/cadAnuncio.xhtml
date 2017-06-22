@@ -4,62 +4,84 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <link href="../../resources/css/css.css" rel="stylesheet" type="text/css" /> 
-    </h:head> 
-    <h:body style="background:#ffffff;">         
-        <h:form id="cadAviso" style="text-align:left;font-size: 11px;">
-			<title>Cadastro de Anúncios</title>          
-            <p:growl id="growl" showDetail="true" sticky="false" life="20000" />
-            <h:panelGrid columns="2" columnClasses="" style="width:95%;margin-left:5%;" >   
-            	<p:outputLabel value="Título"/>
-            	<p:outputLabel value="Categoria"/>
-            	<p:inputText id="titulo" value="#{cadAnuncioController.anuncio.titulo}" style="width:95%;"/>
-            	<p:selectOneMenu id="categoria" value="#{cadAnuncioController.anuncio.categoria}"
-					style="width:95px;">
-					<f:selectItem itemLabel="Acessórios" itemValue="Acessórios" />
-					<f:selectItem itemLabel="Brinquedos" itemValue="Brinquedos" /> 
-					<f:selectItem itemLabel="Eletrônicos" itemValue="Eletrônicos" />
-					<f:selectItem itemLabel="Eletrodomésticos" itemValue="Eletrodomésticos" /> 
-					<f:selectItem itemLabel="Ferramentas" itemValue="Ferramentas" />
-					<f:selectItem itemLabel="Maquiagens" itemValue="Maquiagens" /> 
-					<f:selectItem itemLabel="Móveis e Decoração" itemValue="Móveis e Decoração" /> 
-					<p:ajax event="change" />
-				</p:selectOneMenu>
-            </h:panelGrid>  	 
-            <h:panelGrid columns="1" style="width:95%;margin-left:5%;" >   
-	       		<p:outputLabel value="Descrição"/> 
-	       		<p:inputTextarea value="#{cadAnuncioController.anuncio.descricao}" id="descricao" rows="3" style="width:95%;" placeholder="Informe uma descrição.."/>
-       		</h:panelGrid>  
-       		<h:panelGrid columns="3" columnClasses="" style="width:95%;margin-left:5%;" >    
-       			<p:outputLabel value="Qntd Estoque"/>
-       			<p:outputLabel value="Valor"/>
-       			<p:outputLabel value=""/>   
-       			
-       			<p:inputText id="estoque" value="#{cadAnuncioController.anuncio.estoque}" style="width:70%;text-aling:right;"/>
-       			<p:inputText id="valor" value="#{cadAnuncioController.anuncio.valor}" style="width:70%;text-align:right;">
-       				<f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
-       			</p:inputText>
-       			<h:panelGroup>
-       				<p:selectBooleanCheckbox id="habilitado"
-						value="#{cadAnuncioController.anuncio.habilitado}" />
-					<p:outputLabel for="habilitado" value="Anúncio Habilitado"
-						style="margin-left:0.8%;" />
-       			</h:panelGroup>
-       		</h:panelGrid>   
-       		<br/>     
-       		<div align="center">
-                 <p:commandButton icon="ui-icon-check" value="Confirmar" actionListener="#{cadAnuncioController.salvar()}" update="growl" />
-                 <p:commandButton icon="ui-icon-close" value="Cancelar" action="#{cadAnuncioController.cancelar()}"
-				 	update="growl" style="margin-left:2%;"/>
-            </div>
-            <style>
-            	.ui-widget-content { 
-				    background: #ffffff;
-				    border:none;
-				    color: #00354b;
-				}  
-            </style>
-        </h:form>     
-    </h:body>
+<h:head>
+	<link href="../../resources/css/css.css" rel="stylesheet"
+		type="text/css" />
+</h:head>
+<h:body style="background:#ffffff;">
+	<h:form id="cadAviso" style="text-align:left;font-size: 11px;">
+		<title>Cadastro de Anúncios</title>
+		<p:growl id="growl" showDetail="true" sticky="false" life="20000" />
+		<h:panelGrid columns="2" columnClasses=""
+			style="width:95%;margin-left:5%;">
+			<p:outputLabel value="Título" />
+			<p:outputLabel value="Categoria" />
+			<p:inputText id="titulo"
+				value="#{cadAnuncioController.anuncio.titulo}" style="width:95%;" />
+			<p:selectOneMenu id="categoria"
+				value="#{cadAnuncioController.anuncio.categoria}"
+				style="width:95px;">
+				<f:selectItem itemLabel="Selecione" itemValue="0" />
+				<f:selectItem itemLabel="Acessórios" itemValue="Acessórios" />
+				<f:selectItem itemLabel="Brinquedos" itemValue="Brinquedos" />
+				<f:selectItem itemLabel="Eletrônicos" itemValue="Eletrônicos" />
+				<f:selectItem itemLabel="Eletrodomésticos"
+					itemValue="Eletrodomésticos" />
+				<f:selectItem itemLabel="Ferramentas" itemValue="Ferramentas" />
+				<f:selectItem itemLabel="Maquiagens" itemValue="Maquiagens" />
+				<f:selectItem itemLabel="Móveis e Decoração"
+					itemValue="Móveis e Decoração" />
+				<p:ajax event="change" />
+			</p:selectOneMenu>
+		</h:panelGrid>
+		<h:panelGrid columns="1" style="width:95%;margin-left:5%;">
+			<p:outputLabel value="Descrição" />
+			<p:inputTextarea value="#{cadAnuncioController.anuncio.descricao}"
+				id="descricao" rows="3" style="width:95%;"
+				placeholder="Informe uma descrição.." />
+		</h:panelGrid>
+		<h:panelGrid columns="3" columnClasses=""
+			style="width:95%;margin-left:5%;">
+			<p:outputLabel value="Qntd Estoque" />
+			<p:outputLabel value="Valor" />
+			<p:outputLabel value="" />
+
+			<p:inputText id="estoque"
+				value="#{cadAnuncioController.anuncio.estoque}"
+				style="width:70%;text-aling:right;" />
+			<p:inputText id="valor" value="#{cadAnuncioController.anuncio.valor}"
+				style="width:70%;text-align:right;">
+				<f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
+			</p:inputText>
+			<h:panelGroup>
+				<p:selectBooleanCheckbox id="habilitado"
+					value="#{cadAnuncioController.anuncio.habilitado}" />
+				<p:outputLabel for="habilitado" value="Anúncio Habilitado"
+					style="margin-left:0.8%;" />
+			</h:panelGroup>
+		</h:panelGrid>
+		<br /> 
+		<h:panelGrid columns="1" style="width:89%;margin-left:5%;">
+			<p:fileUpload label="Anexar Imagem" fileUploadListener="#{cadAnuncioController.fileUploadListener}"
+				value="#{cadAnuncioController.file}" mode="advanced" update="growl"
+				allowTypes="/(\.|\/)(png|jpg?g)$/" >
+			</p:fileUpload>
+		</h:panelGrid>
+		<br /> 
+		<div align="center">
+			<p:commandButton icon="ui-icon-check" value="Confirmar"
+				actionListener="#{cadAnuncioController.salvar()}" update="growl" />
+			<p:commandButton icon="ui-icon-close" value="Cancelar"
+				action="#{cadAnuncioController.cancelar()}" update="growl"
+				style="margin-left:2%;" />
+		</div>
+		<style>
+.ui-widget-content {
+	background: #ffffff;
+	border: none;
+	color: #00354b;
+}
+</style>
+	</h:form>
+</h:body>
 </html>

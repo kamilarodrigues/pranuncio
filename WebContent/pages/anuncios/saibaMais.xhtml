@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link href="../../resources/css/css.css" rel="stylesheet"
+		type="text/css" />
+</h:head>
+<h:body style="background:#ffffff;">
+	<h:form id="cadAviso" style="text-align:left;font-size: 11px;">
+		<title>Anúncios</title>
+		<p:growl id="growl" showDetail="true" sticky="false" life="20000" />
+		<h:panelGrid columns="2" columnClasses="tamanho50,tamanho50"
+			style="width:94%;margin-left:3%;">
+			<h:panelGroup>
+				<h:panelGrid columns="2" columnClasses="tamanho30, tamanho70"
+					style="width:99%;margin-left:1%;">
+					<p:outputLabel value="Título" style="font-weight: bold;" />
+					<p:outputLabel value="#{saibaMaisController.anuncio.titulo}" />
+					<p:outputLabel value="Responsável" style="font-weight: bold;" />
+					<p:outputLabel value="#{saibaMaisController.anuncio.usuario.nome}" />
+					<p:outputLabel value="Estado" style="font-weight: bold;" />
+					<p:outputLabel value="#" />
+					<p:outputLabel value="Bairro" style="font-weight: bold;" />
+					<p:outputLabel value="#" />
+				</h:panelGrid>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:panelGrid columns="2" columnClasses="tamanho34, tamanho70"
+					style="width:99%;margin-left:1%;">
+					<p:outputLabel value="Categoria" style="font-weight: bold;" />
+					<p:outputLabel value="#{saibaMaisController.anuncio.categoria}" />
+					<p:outputLabel value="E-mail" style="font-weight: bold;" />
+					<p:outputLabel value="#{saibaMaisController.anuncio.usuario.email}" />
+					<p:outputLabel value="Data Anúncio" style="font-weight: bold;" />
+					<p:outputLabel value="#{saibaMaisController.anuncio.dataanuncio}">
+						<f:convertDateTime pattern="dd/MM/yyyy"
+							timeZone="America/Sao_Paulo" />
+					</p:outputLabel>
+					<p:outputLabel value="Cidade" style="font-weight: bold;" />
+					<p:outputLabel value="#" />
+
+				</h:panelGrid>
+			</h:panelGroup>
+		</h:panelGrid>
+		<h:panelGrid columns="1" style="width:94%;margin-left:4%;">
+			<h:panelGroup>
+				<p:outputLabel value="Descrição" style="font-weight: bold;" />
+				<p:outputLabel value="#{saibaMaisController.anuncio.descricao}"
+					style="margin-left:4.5%;" />
+			</h:panelGroup>
+		</h:panelGrid>
+		<div align="center">
+			<p:commandButton icon="ui-icon-close" value="Fechar"
+				action="#{saibaMaisController.cancelar()}" update="growl"
+				style="margin-left:2%;" />
+		</div>
+		<h:panelGroup>
+			<div align="right">  
+				<p:outputLabel
+					value="#{saibaMaisController.retornarValorTotal()}"
+					style="font-size:43px;color:#A0C637;">
+				</p:outputLabel>
+			</div>
+		</h:panelGroup>
+	</h:form>
+</h:body>
+</html>

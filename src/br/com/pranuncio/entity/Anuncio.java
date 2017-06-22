@@ -137,6 +137,14 @@ public class Anuncio implements Serializable {
 		this.responsavelanuncio = responsavelanuncio;
 	}
 
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+
 	@Override
 	public int hashCode() {
 		int hash = 0;
