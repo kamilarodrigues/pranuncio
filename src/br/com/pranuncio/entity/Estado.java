@@ -6,12 +6,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id; 
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery; 
 
 @SuppressWarnings("serial")
-@Entity
-@NamedQuery(name="Estado.listar", query="select e from Estado e order by e.nome")
+@Entity 
+@NamedQueries({ 
+	@NamedQuery(name="Estado.findAll", query="select e from Estado e order by e.nome"),
+	@NamedQuery(name="Estado.findById", query="select e from Estado e where e.idestado = :id")
+})
 public class Estado implements Serializable {
 	
 	@Id

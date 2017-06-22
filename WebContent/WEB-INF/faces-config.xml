@@ -38,8 +38,24 @@
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
+			<from-outcome>saibaMais</from-outcome>
+			<to-view-id>/pages/anuncios/saibaMais.xhtml</to-view-id>
+			<redirect />  
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
 			<from-outcome>cadUsuario</from-outcome>
 			<to-view-id>/usuario/cadUsuario.xhtml</to-view-id>
+			<redirect />  
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>cadDadosAnunciante</from-outcome>
+			<to-view-id>/pages/dadosanunciante/cadDadosAnunciante.xhtml</to-view-id>
 			<redirect />  
 		</navigation-case>
 	</navigation-rule>

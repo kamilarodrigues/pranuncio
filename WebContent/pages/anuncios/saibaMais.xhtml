@@ -51,20 +51,20 @@
 				<p:outputLabel value="#{saibaMaisController.anuncio.descricao}"
 					style="margin-left:4.5%;" />
 			</h:panelGroup>
-		</h:panelGrid>
+		</h:panelGrid> 
+		<h:panelGroup>
+			<div align="right">  
+				<p:outputLabel
+					value="#{saibaMaisController.retornarValorTotal()}"
+					style="font-size:38px;color:#A0C637;">
+				</p:outputLabel>
+			</div>
+		</h:panelGroup>
 		<div align="center">
 			<p:commandButton icon="ui-icon-close" value="Fechar"
 				action="#{saibaMaisController.cancelar()}" update="growl"
 				style="margin-left:2%;" />
 		</div>
-		<h:panelGroup>
-			<div align="right">  
-				<p:outputLabel
-					value="#{saibaMaisController.retornarValorTotal()}"
-					style="font-size:43px;color:#A0C637;">
-				</p:outputLabel>
-			</div>
-		</h:panelGroup>
 	</h:form>
 </h:body>
 </html>

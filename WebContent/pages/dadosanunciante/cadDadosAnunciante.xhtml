@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link href="../../resources/css/css.css" rel="stylesheet"
+		type="text/css" />
+</h:head>
+<h:body style="background:#ffffff;">
+	<h:form id="cadAviso" style="text-align:left;font-size: 11px;">
+		<title>Dados do Usuário/Vendedor</title>
+		<p:growl id="growl" showDetail="true" sticky="false" life="20000" />
+		<h:panelGrid columns="2" columnClasses="tamanho50, tamanho50"
+			style="width:95%;margin-left:5%;">   
+			<p:outputLabel value="Estado" /> 
+			<p:outputLabel value="Cidade" />
+			<p:selectOneMenu id="selectEstado" style="width:80%;"
+				value="#{cadDadosAnuncianteController.estado}"
+				converter="#{estadoConverter}" required="true" filter="true">
+				<p:ajax listener="#{cadDadosAnuncianteController.listarCidade()}"
+					update="selectCidade" />
+				<f:selectItem itemLabel="Selecione o estado"
+					noSelectionOption="true" itemValue="" />
+				<f:selectItems value="#{cadDadosAnuncianteController.listaEstado}" var="estado"
+					itemLabel="#{estado.nome}" itemValue="#{estado}" />    
+			</p:selectOneMenu>
+			<p:selectOneMenu id="selectCidade" style="width:80%;"
+				value="#{cadDadosAnuncianteController.cidade}"
+				converter="#{cidadeConverter}" required="true" filter="true">
+				<f:selectItem itemLabel="Selecione a cidade"
+					noSelectionOption="true" itemValue="" />
+				<f:selectItems value="#{cadDadosAnuncianteController.listaCidade}" var="cidade"
+					itemLabel="#{cidade.nome}" itemValue="#{cidade}" />
+			</p:selectOneMenu>
+		</h:panelGrid>
+		<h:panelGrid columns="2" columnClasses="tamanho50, tamanho50" style="width:95%;margin-left:5%;">
+			<p:outputLabel value="Bairro" />
+			<p:outputLabel value="Telefone" />
+			<p:inputText id="bairro"  
+				value="#{cadDadosAnuncianteController.dadosanunciante.bairro}" style="width:95%;" />
+			<p:inputText id="telefone"
+				value="#{cadDadosAnuncianteController.dadosanunciante.telefone}" style="width:95%;" />
+		</h:panelGrid>
+		<h:panelGrid columns="1" style="width:95%;margin-left:5%;">
+			<p:outputLabel value="Entrega" />
+			<p:selectOneRadio id="entrega"
+				value="#{cadDadosAnuncianteController.dadosanunciante.entrega}" style="width:100%"
+				layout="grid" columns="3">
+				<f:selectItem itemLabel="Via Correio" itemValue="Via Correio" />
+				<f:selectItem itemLabel="Buscar com Anúnciante"
+					itemValue="Buscar com Anúnciante" />
+				<f:selectItem itemLabel="A combinar" itemValue="A combinar" />
+			</p:selectOneRadio>
+		</h:panelGrid>
+		<br />
+		<div align="center">
+			<p:commandButton icon="ui-icon-check" value="Confirmar"
+				actionListener="#{cadDadosAnuncianteController.salvar()}" update="growl" />
+			<p:commandButton icon="ui-icon-close" value="Cancelar"
+				action="#{cadDadosAnuncianteController.cancelar()}" update="growl"
+				style="margin-left:2%;" />
+		</div>
+		<style>
+.ui-widget-content {
+	background: #ffffff;
+	border: none;
+	color: #00354b;
+}
+</style>
+	</h:form>
+</h:body>
+</html>

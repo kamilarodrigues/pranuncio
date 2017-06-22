@@ -9,12 +9,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery; 
 
 @SuppressWarnings("serial")
-@Entity
-@NamedQuery(name="Cidade.listar", query="select c from Cidade c "
-		+ "where c.estado.idestado=:idestado")
+@Entity 
+@NamedQueries({ 
+	@NamedQuery(name="Cidade.findAll", query="select c from Cidade c order by c.nome"),
+	@NamedQuery(name="Cidade.findById", query="select c from Cidade c where c.idcidade = :id"),
+	@NamedQuery(name="Cidade.findAllByEstadoId", query="select c from Cidade c where c.estado.idestado = :idEstado")
+})
 public class Cidade implements Serializable {
 	
 	@Id

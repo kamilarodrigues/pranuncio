@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.pranuncio.controller;
   
 import java.io.Serializable; 
@@ -51,12 +46,10 @@ public class MenuController implements Serializable {
 		return "anunciosDisponiveis";
 	}
      
-    public String dadosVendedor() { 
-    	FacesContext fc = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+    public String dadosVendedor() {  
 		Map<String, Object> options = new HashMap<String, Object>();
-		options.put("contentWidth", 225); 
-		RequestContext.getCurrentInstance().openDialog("dadosVendedor", options, null);
+		options.put("contentWidth", 480); 
+		RequestContext.getCurrentInstance().openDialog("cadDadosAnunciante", options, null);
 		return "";
 	}   
 }
