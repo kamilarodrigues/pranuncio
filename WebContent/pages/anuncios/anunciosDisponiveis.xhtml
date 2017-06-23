@@ -98,7 +98,7 @@
 						var="anuncio">
 						<div class="col-md-4"
 							style="width: 330px; float: left; padding: 18px 15px; color: #00354B; font-size: 12px;">
-							<div class="borderSombra" style="height:250px;">
+							<div class="borderSombra" style="height:350px;">
 								<h:panelGroup>
 									<h:panelGrid columns="1" style="width:95%;margin-left:4%;">
 										<br />
@@ -108,13 +108,15 @@
 												<p:outputLabel value="#{anuncio.titulo}"
 													style="font-size:18px;" />
 											</h:panelGrid>
+											<br />
 										</h:panelGroup>
-									</h:panelGrid>
+									</h:panelGrid>  
 									<h:panelGrid columns="1" style="width:95%;margin-left:4%;"
 										columnClasses="tamanho98">
 										<h:panelGroup>
-											<div align="center"> 
-												<p:outputLabel
+											<div align="center">   
+												<img src="http://systm.com.br:82/ftproot/pranuncio/anuncio/#{anuncio.imagem}" width="200" height="95"/> <br/>
+												<p:outputLabel    
 													value="#{anunciosController.retornarValorTotal(anuncio.valor)}"
 													style="font-size:38px;color:#A0C637;">
 												</p:outputLabel>

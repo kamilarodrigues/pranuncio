@@ -15,7 +15,7 @@ public class Ftp {
 
 	public Ftp() {
 		ftpClient = new FTPClient();
-		this.host = "systm.com.br";
+		this.host = "192.168.1.100";
 		this.user = "tmftp";
 		this.password = "20SimpleS78";
 	}
@@ -31,14 +31,10 @@ public class Ftp {
 
 	public String enviarArquivo(UploadedFile uploadedFile, String arquivoFTP, String pasta) throws IOException {
 		ftpClient.changeWorkingDirectory(pasta);
-		ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE);
-		FileInputStream arqEnviar = (FileInputStream) uploadedFile.getInputstream();
-		arquivoFTP = new String(arquivoFTP.getBytes("ISO-8859-1"), "UTF-8");
-		if (ftpClient.storeFile(arquivoFTP, arqEnviar)) {
-			arqEnviar.close();
+		ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE); 
+		if (ftpClient.storeFile(arquivoFTP, uploadedFile.getInputstream())) { 
 			return "Arquivo: " + arquivoFTP + " salvo com Sucesso";
-		} else {
-			arqEnviar.close();
+		} else { 
 			return "Erro Salvar Arquivo";
 		}
 	}
@@ -54,7 +50,7 @@ public class Ftp {
 	}
 
 	public void desconectar() throws IOException {
-		ftpClient.logout();
+		ftpClient.logout();   
 		ftpClient.disconnect();
 	}
 }

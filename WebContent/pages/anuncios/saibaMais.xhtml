@@ -8,7 +8,7 @@
 	<link href="../../resources/css/css.css" rel="stylesheet"
 		type="text/css" />
 </h:head>
-<h:body style="background:#ffffff;">
+<h:body style="background:#ffffff;">   
 	<h:form id="cadAviso" style="text-align:left;font-size: 11px;">
 		<title>Anúncios</title>
 		<p:growl id="growl" showDetail="true" sticky="false" life="20000" />
@@ -59,10 +59,14 @@
 				<p:outputLabel value="#{saibaMaisController.anuncio.descricao}"
 					style="margin-left:4.5%;" />
 			</h:panelGroup>
-		</h:panelGrid>  
+		</h:panelGrid>
+		<br/>  
+		<div align="center">
+			<img src="http://systm.com.br:82/ftproot/pranuncio/anuncio/#{saibaMaisController.anuncio.imagem}" width="60%"/> <br/>
+		</div>
 		<h:panelGroup>
 			<div align="right">  
-				<p:outputLabel
+				<p:outputLabel  
 					value="#{saibaMaisController.retornarValorTotal()}"
 					style="font-size:38px;color:#A0C637;">
 				</p:outputLabel>
