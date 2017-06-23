@@ -10,7 +10,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
+import javax.transaction.Transactional;
+ 
 import br.com.pranuncio.entity.Usuario;
 
 @Named
@@ -32,7 +33,7 @@ public class UsuarioService {
 		return usuarioRetorno;
 	}
 
-	private String criptografiaMd5(String valor) {
+	public String criptografiaMd5(String valor) {
 		MessageDigest mDigest;
 		try {
 			mDigest = MessageDigest.getInstance("MD5");
@@ -50,5 +51,17 @@ public class UsuarioService {
 			return null;
 		}
 	}
+	
+	@Transactional
+	public Usuario salvar(Usuario usuario) {
+		entityManager.merge(usuario);
+		return usuario;
+	}
+	
+	@Transactional
+	public void excluir(Usuario usuario) {
+		entityManager.remove(entityManager.merge(usuario));
+	}
+
 
 }
