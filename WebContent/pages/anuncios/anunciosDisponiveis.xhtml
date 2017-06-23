@@ -91,18 +91,14 @@
 			</p:accordionPanel>
 			<br />
 			<p:outputLabel value="Anúncios"
-				style="font-size:24px;font-variant: super;color:#00338C;" />
-			<div align="right" style="width: 93%; margin-left: 1%;">
-				<p:commandButton id="btnNovo" value="Novo Anúncio" action="#"
-					icon="ui-icon-plusthick" />
-			</div> 
-			<p:scrollPanel id="tabelaAnuncio" mode="native" style="width:98%;"> 
+				style="font-size:24px;font-variant: super;color:#00338C;" /> 
+			<p:scrollPanel id="tabelaAnuncio" mode="native" style="width:100%;"> 
 				<div>
 					<ui:repeat value="#{anunciosController.listaAnuncios}"
 						var="anuncio">
 						<div class="col-md-4"
 							style="width: 330px; float: left; padding: 18px 15px; color: #00354B; font-size: 12px;">
-							<div class="borderSombra" style="height: 320px;">
+							<div class="borderSombra" style="height:250px;">
 								<h:panelGroup>
 									<h:panelGrid columns="1" style="width:95%;margin-left:4%;">
 										<br />
@@ -117,12 +113,10 @@
 									<h:panelGrid columns="1" style="width:95%;margin-left:4%;"
 										columnClasses="tamanho98">
 										<h:panelGroup>
-											<div align="center">
-												<img src="#{anunciosController.retornarImagem(anuncio)}" width="95"/>
-												<br/>
+											<div align="center"> 
 												<p:outputLabel
 													value="#{anunciosController.retornarValorTotal(anuncio.valor)}"
-													style="font-size:35px;color:#A0C637;">
+													style="font-size:38px;color:#A0C637;">
 												</p:outputLabel>
 											</div>
 										</h:panelGroup>

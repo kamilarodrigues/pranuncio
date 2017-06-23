@@ -1,19 +1,15 @@
 package br.com.pranuncio.controller.anuncio;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
+ 
+import java.io.IOException; 
 import java.io.Serializable;
-import java.util.Date;
-import javax.annotation.PostConstruct;
+import java.util.Date; 
+
+import javax.annotation.PostConstruct; 
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpSession;
+import javax.inject.Named; 
+import javax.servlet.http.HttpSession; 
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.FileUploadEvent;
@@ -22,6 +18,7 @@ import org.primefaces.model.UploadedFile;
 import br.com.pranuncio.controller.LoginController;
 import br.com.pranuncio.entity.Anuncio;
 import br.com.pranuncio.service.AnuncioService;
+import br.com.pranuncio.util.Ftp;
 import br.com.pranuncio.util.Mensagem; 
 
 @Named
@@ -73,6 +70,7 @@ public class CadAnuncioController implements Serializable {
 	public void setLoginController(LoginController loginController) {
 		this.loginController = loginController;
 	}
+ 
 
 	public UploadedFile getFile() {
 		return file;
@@ -118,8 +116,7 @@ public class CadAnuncioController implements Serializable {
 			if (file != null) {
 				anuncio.setImagem(anuncio.getIdanuncio() + ".png");
 				anuncio = anuncioService.alterar(anuncio);
-			}
-			salvarArquivo();
+			} 
 			Mensagem.lancarMensagemInfo("Anuncio Cadastrado com sucesso!", "");
 			RequestContext.getCurrentInstance().closeDialog(null);
 		}
@@ -147,6 +144,9 @@ public class CadAnuncioController implements Serializable {
 
 	public void fileUploadListener(FileUploadEvent e) {
 		this.file = e.getFile();
+		anuncio.setUsuario(loginController.getUsuario()); 
+		anuncio = anuncioService.alterar(anuncio);
+		salvarArquivo();
 		Mensagem.lancarMensagemInfo("Upload efetuado!", "");
 	}
 
@@ -156,20 +156,14 @@ public class CadAnuncioController implements Serializable {
 	}
 
 	public void enviarArquivo() {
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-		ServletContext request = (ServletContext) facesContext.getExternalContext().getContext();
-		String pasta = request.getRealPath("");
-		pasta = pasta + "\\resources\\img\\anuncios\\" + nomeArquivo; 
-		try { 
-			FileOutputStream arquivo = new FileOutputStream(pasta); 
-			arquivo.flush();
-			arquivo.write(file.getContents()); 
-			arquivo.close();
-			Mensagem.lancarMensagemInfo("Upload salvo com sucesso!", "");
-		} catch (IOException e) {
-			e.printStackTrace();
-			Mensagem.lancarMensagemInfo("Erro ao fazer upload!", "");
-		}
+		Ftp ftp = new Ftp();
+		try {
+			ftp.conectar(); 
+			ftp.enviarArquivo(file, "batata.png", "/systm/pais"); 
+			ftp.desconectar();  
+		} catch (IOException e1) { 
+			e1.printStackTrace();  
+		}  
 	}
 
 }

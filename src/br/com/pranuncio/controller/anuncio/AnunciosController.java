@@ -225,11 +225,5 @@ public class AnunciosController implements Serializable {
 		RequestContext.getCurrentInstance().openDialog("saibaMais", options, null);
 		return "";
 	} 
-	
-	public String retornarImagem(Anuncio anuncio){
-		if(anuncio.getImagem()!=null && anuncio.getImagem().length()>0){ 
-	        String nomeArquivo = "../../resources/img/anuncios/"+anuncio.getImagem();
-	        return nomeArquivo;
-		}else return ""; 
-	}
+	 
 }
