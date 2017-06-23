@@ -114,7 +114,7 @@ public class CadAnuncioController implements Serializable {
 				anuncio = anuncioService.alterar(anuncio);
 			}
 			if (file != null) {
-				anuncio.setImagem(anuncio.getIdanuncio() + ".png");
+				anuncio.setImagem(nomeArquivo);
 				anuncio = anuncioService.alterar(anuncio);
 			} 
 			Mensagem.lancarMensagemInfo("Anuncio Cadastrado com sucesso!", "");
@@ -159,7 +159,7 @@ public class CadAnuncioController implements Serializable {
 		Ftp ftp = new Ftp();
 		try {
 			ftp.conectar(); 
-			ftp.enviarArquivo(file, "batata.png", "/systm/pais"); 
+			ftp.enviarArquivo(file, nomeArquivo, "/pranuncio/anuncio"); 
 			ftp.desconectar();  
 		} catch (IOException e1) { 
 			e1.printStackTrace();  

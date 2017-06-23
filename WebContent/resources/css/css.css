@@ -114,5 +114,13 @@ input {
     -moz-box-shadow: 5px 5px 10px #0076a3; 
     background: #f5f3e5;  
 } 
+
+.ui-dialog {
+    position: fixed;
+    padding: 0;
+    overflow: hidden;
+    top: 55px !important;
+}
+   
     
 
