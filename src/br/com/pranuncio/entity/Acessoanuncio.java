@@ -9,12 +9,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne; 
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Transient; 
 
 @SuppressWarnings("serial")
-@Entity 
+@Entity
+@NamedQueries({ @NamedQuery(name = "Acessoanuncio.listar", query = "select a from Acessoanuncio a "
+		+ "where a.anuncio.idanuncio= :idanuncio") })
 public class Acessoanuncio implements Serializable {
 	
+	@Transient
+	public static final String LISTAR = "Usuario.listar";
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idacessoanuncio;   
@@ -25,7 +32,7 @@ public class Acessoanuncio implements Serializable {
 	private Usuario usuario;  
 	@ManyToOne
 	@JoinColumn(name="anuncio_idanuncio")
-	private Anuncio anuncio;   
+	private Anuncio anuncio;    
 
 	public Integer getIdacessoanuncio() {
 		return idacessoanuncio;
@@ -58,6 +65,7 @@ public class Acessoanuncio implements Serializable {
 	public void setAnuncio(Anuncio anuncio) {
 		this.anuncio = anuncio;
 	}
+ 
 
 	@Override
     public int hashCode() {

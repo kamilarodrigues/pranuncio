@@ -19,7 +19,9 @@ import javax.servlet.http.HttpSession;
 import org.primefaces.context.RequestContext;
 
 import br.com.pranuncio.controller.LoginController;
+import br.com.pranuncio.entity.Acessoanuncio;
 import br.com.pranuncio.entity.Anuncio;
+import br.com.pranuncio.service.AcessoAnuncioService;
 import br.com.pranuncio.service.AnuncioService; 
 
 /**
@@ -35,6 +37,8 @@ public class AnunciosController implements Serializable {
 	private LoginController loginController; 
 	@Inject
 	private AnuncioService anuncioService;
+	@Inject
+	private AcessoAnuncioService acessoAnuncioService;
 	private List<Anuncio> listaAnuncios; 
 	private String categoria;
 	private String titulodescricao;
@@ -132,14 +136,7 @@ public class AnunciosController implements Serializable {
 	public void setValorfinal(float valorfinal) {
 		this.valorfinal = valorfinal;
 	}
-	
-	public String cadAnuncio() {  
-		Map<String, Object> options = new HashMap<String, Object>();
-		options.put("contentWidth", 550); 
-		options.put("modal", true);
-		RequestContext.getCurrentInstance().openDialog("cadAnuncio", options, null);
-		return "";
-	}   
+	 
 	
 	public void listarAnuncios(){
 		String sql = "Select a From Anuncio a"
@@ -185,17 +182,7 @@ public class AnunciosController implements Serializable {
 			}
 		}
 	} 
-	
-	public String editar(Anuncio anuncio) { 
-		FacesContext fc = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
-		session.setAttribute("anuncio", anuncio);
-		Map<String, Object> options = new HashMap<String, Object>();
-		options.put("contentWidth", 550); 
-		options.put("modal", true);
-		RequestContext.getCurrentInstance().openDialog("cadAnuncio", options, null);
-		return "";
-	} 
+	 
 	   
 	public String retornarValorTotal(float valor){
 		NumberFormat format = new DecimalFormat("#,###.##");
@@ -222,6 +209,14 @@ public class AnunciosController implements Serializable {
 		Map<String, Object> options = new HashMap<String, Object>();
 		options.put("contentWidth", 650); 
 		options.put("modal", true);
+		int idusuario = loginController.getUsuario().getIdusuario();
+		if(idusuario!=anuncio.getUsuario().getIdusuario()){
+			Acessoanuncio acessoanuncio = new Acessoanuncio();
+			acessoanuncio.setAnuncio(anuncio);
+			acessoanuncio.setDataacesso(new Date());
+			acessoanuncio.setUsuario(loginController.getUsuario());
+			acessoAnuncioService.incluir(acessoanuncio);
+		}
 		RequestContext.getCurrentInstance().openDialog("saibaMais", options, null);
 		return "";
 	} 

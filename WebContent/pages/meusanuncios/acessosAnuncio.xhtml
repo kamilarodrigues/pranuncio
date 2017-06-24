@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"> 
+	<ui:composition template="/pages/templates/default.xhtml">
+		<ui:define name="corpo">
+			<h:form>
+				<p:growl id="growl" showDetail="true" sticky="false" life="20000" />
+				<br />
+				<br /> 
+				<p:outputLabel value="Acessos Anúncios"
+					style="font-size:24px;font-variant: super;color:#00338C;" />
+				<div align="right" style="width:94%;">
+					<p:commandButton id="btnVoltar" value="Voltar" icon="ui-icon-arrowreturnthick-1-w" action="#{acessosAnunciosController.voltar()}"/>
+				</div>	
+				<br/>
+				<div align="center" style="width:95%;">
+					<p:chart type="line" model="#{acessosAnunciosController.areaModel}" style="height:350px" />
+				</div>
+			</h:form>
+			<style>  
+				.centro {   
+					margin-top: 64px; 
+					position: fixed;
+					background: #ffffff;
+					width:85%;
+					margin-left: 14.4%;   
+					height:100%;  
+				}  
+			</style>
+		</ui:define>
+	</ui:composition> 
+</html>

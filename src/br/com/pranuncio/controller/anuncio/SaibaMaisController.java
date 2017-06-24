@@ -4,8 +4,7 @@ import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.annotation.PostConstruct; 
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;

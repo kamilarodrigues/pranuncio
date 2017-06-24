@@ -27,13 +27,13 @@
 					<p:column headerText="Título" style="width:150px;color:#3A98D8;"> 
 						<h:outputText value="#{anuncio.titulo}" />
 					</p:column>  
-					<p:column headerText="Categoria" style="width:150px;color:#3A98D8;"> 
+					<p:column headerText="Categoria" style="width:120px;color:#3A98D8;"> 
 						<h:outputText value="#{anuncio.categoria}" />
 					</p:column>   
 					<p:column headerText="Descrição" style="width:280px;color:#3A98D8;">
 						<h:outputText value="#{anuncio.descricao}" />
 					</p:column>
-					<p:column headerText="valor" style="width:80px;text-align:right;color:#3A98D8;">
+					<p:column headerText="valor" style="width:75px;text-align:right;color:#3A98D8;">
 						<h:outputText value="#{anuncio.valor}" >
 							<f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
 						</h:outputText>
@@ -45,7 +45,7 @@
 							<p:ajax event="dialogReturn" update="tabelaAnuncios" listener="#{meusAnunciosController.listarAnuncios()}"/>
 						</p:commandLink>
 					</p:column>
-					<p:column headerText="Visualizações" style="width:57px;text-align:center;color:#3A98D8;">
+					<p:column headerText="Visualizações" style="width:69px;text-align:center;color:#3A98D8;">
 						<p:commandLink action="#{meusAnunciosController.visualizacoes(anuncio)}"
 							title="Visualizações" style="text-decoration: none">
 							<i class="fa fa-signal" style="font-size: 15px;color:#00354B;"/>  

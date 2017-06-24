@@ -21,7 +21,7 @@ import javax.persistence.Transient;
 public class Anuncio implements Serializable {
 
 	@Transient
-	public static final String CONSULTAR_HABILITADOS = "Usuario.consultarHabilitados";
+	public static final String CONSULTAR_HABILITADOS = "Anuncio.consultarHabilitados";
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idanuncio;

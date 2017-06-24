@@ -64,10 +64,7 @@ public class MeusAnunciosController implements Serializable {
 	public void setAnuncioService(AnuncioService anuncioService) {
 		this.anuncioService = anuncioService;
 	}
-
-
-
-
+ 
 	public String cadAnuncio() {  
 		Map<String, Object> options = new HashMap<String, Object>();
 		options.put("contentWidth", 550); 
@@ -107,6 +104,6 @@ public class MeusAnunciosController implements Serializable {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		session.setAttribute("anuncio", anuncio); 
-		return "";
+		return "acessosAnuncio";
 	}
 }

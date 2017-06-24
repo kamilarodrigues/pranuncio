@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import br.com.pranuncio.entity.Anuncio; 
+import br.com.pranuncio.entity.Acessoanuncio; 
 
 @Named
 @ApplicationScoped
@@ -19,41 +19,25 @@ public class AcessoAnuncioService {
 	@Inject
 	private EntityManager entityManager;
 
-	public List<Anuncio> listarHabilitados() {
-		Query q = entityManager.createNamedQuery(Anuncio.CONSULTAR_HABILITADOS); 
-		List<Anuncio> anuncios = q.getResultList(); 
-		if (anuncios!=null) {
-			return anuncios;
+	public List<Acessoanuncio> listar(String sql) {
+		Query q = entityManager.createQuery(sql); 
+		List<Acessoanuncio> lista = q.getResultList(); 
+		if (lista!=null) {
+			return lista;
 		}else{
-			return anuncios = new ArrayList<>();
+			return lista = new ArrayList<>();
 		} 
-	}
-	
-	public List<Anuncio> meusAnuncios(String sql) {
-		Query q = entityManager.createQuery(sql);  
-		List<Anuncio> anuncios = q.getResultList(); 
-		if (anuncios!=null) {
-			return anuncios;
-		}else{
-			return anuncios = new ArrayList<>();
-		} 
-	}
+	} 
  
 	@Transactional
-	public Anuncio incluir(Anuncio anuncio) {
-		entityManager.persist(anuncio);
-		return anuncio;
+	public Acessoanuncio incluir(Acessoanuncio acessoanuncio) {
+		entityManager.persist(acessoanuncio);
+		return acessoanuncio;
 	}
-	
+	  
 	@Transactional
-	public Anuncio alterar(Anuncio anuncio) {
-		entityManager.merge(anuncio);
-		return anuncio;
-	}
-	
-	@Transactional
-	public void excluir(Anuncio anuncio) {
-		entityManager.remove(entityManager.merge(anuncio));
+	public void excluir(Acessoanuncio acessoanuncio) {
+		entityManager.remove(entityManager.merge(acessoanuncio));
 	}
 
 }

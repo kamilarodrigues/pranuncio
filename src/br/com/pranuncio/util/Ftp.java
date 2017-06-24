@@ -1,6 +1,5 @@
 package br.com.pranuncio.util;
- 
-import java.io.FileInputStream;
+  
 import java.io.IOException; 
 
 import org.apache.commons.net.ftp.FTPClient;
