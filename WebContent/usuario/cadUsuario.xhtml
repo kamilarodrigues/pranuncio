@@ -32,7 +32,11 @@
 					<p:inputText placeholder="Usuário" value="#{cadUsuarioController.usuario.usuario}" 
 						required="true" requiredMessage="O usuario é obrigatório!"/>
 					<p:inputText placeholder="E-mail" value="#{cadUsuarioController.usuario.email}" 
-						required="true" requiredMessage="O e-mail é obrigatório!"/>
+						required="true" requiredMessage="O e-mail é obrigatório!" validatorMessage="E-mail inválido!">
+						<f:validateRegex
+							pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$">
+						</f:validateRegex>
+					</p:inputText>
 		 			 
 		 			<p:outputLabel value="Senha"/>
 		 			<p:outputLabel value="Confirmar Senha"/>
@@ -43,15 +47,14 @@
 					<p:inputText placeholder="Senha" value="#{cadUsuarioController.usuario.confirmarsenha}" type="password"
 						required="true" requiredMessage="A senha é obrigatória!" />  
 					<p:outputLabel/>
+					<p:outputLabel/>
 					<h:commandButton id="btnCadastro" action="#{cadUsuarioController.salvar()}"
-						value="Confirmar" class="botaoCadastro" title="Cadastrar-se em PR Anuncios."/>  
-					<h:commandButton id="btnCancelar" action="#{cadUsuarioController.cancelar()}"
-						value="Cancelar" class="botaoCancelar" title="Cancelar cadastro."/>   
+						value="Confirmar" class="botaoCadastro" title="Cadastrar-se em PR Anuncios."/>   
 					<br/> 
-				</p:panelGrid>     
+				</p:panelGrid>        
 			</div>      
 		</div>    
 	</h:form>  
-</body>
-</html>
+</body>  
+</html>  
   
